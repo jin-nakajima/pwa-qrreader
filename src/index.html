@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/public/images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/public/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/public/images/icons/favicon-16x16.png">
+  <link rel="manifest" href="/public/manifest.json">
+  <link rel="mask-icon" href="/public/images/icons/safari-pinned-tab.svg" color="#2b5797">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="/public/images/icons/browserconfig.xml">
+  <meta name="theme-color" content="#f3f3f3">
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <title>pwa-qr test</title>
+</head>
+<body>
+  <h1>PWA</h1>
+  <p>pwa-qr site.</p>
+  <!--<img src="/public/images/icons/icon-192x192.png" alt="app icon"> -->
+  <canvas id="canvas"></canvas>
+  <video id="video" width="300" height="200"></video>
+  <br>
+  <button id="start-scan">QRコードスキャン</button>
+  <br>
+  <p id="output"></p>
+  <script src="./scripts/qrscan.js"></script>
+</body>
+</html>
