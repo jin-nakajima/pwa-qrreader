@@ -14,13 +14,11 @@ function scanQRCode(){
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let qrcode = jsQR(img.data, img.width, img.height, {inversionAttempts: "dontInvert"});
     if(qrcode){
-        //drawRect(qrcode.location);
+        drawRect(qrcode.location);
+        if(qrcode.data.startsWith("http")){
+          window.location.href = qrcode.data;
+        }
         //output.innerText = qrcode.data;
-        const modal = document.getElementById('qr-code-modal');
-        const qrCodeData = document.getElementById('qr-code-data');
-        qrCodeData.innerHTML = `<a href="${qrCode.data}" target="_blank">${qrCode.data}</a>`;
-        modal.style.display = 'block';
-        video.srcObject.getTracks().forEach(track => track.stop());
     }else{
         output.innerText = "QRコード読み取り中"
     }
