@@ -1,6 +1,6 @@
 const video = document.createElement('video');
 const startScanBtn = document.getElementById('start-scan');
-const output = document.getElementById('output');
+const output = document.querySelector('#output');
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -14,10 +14,22 @@ function scanQRCode(){
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let qrcode = jsQR(img.data, img.width, img.height, {inversionAttempts: "dontInvert"});
     if(qrcode){
-        drawRect(qrcode.location);
-        output.innerText = qrcode.data;
+        //drawRect(qrcode.location);
+        //output.innerText = qrcode.data;
+        const modal = document.createElement('div');
+        modal.style.position = 'fixed';
+        modal.style.top = 0;
+        modal.style.left = 0;
+        modal.style.right = 0;
+        modal.style.bottom = 0;
+        modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.innerHTML = `<a href="${qrCode.data}" target="_blank">${qrCode.data}</a>`;
+        document.body.appendChild(modal);
     }else{
-        output.innerText = "Detecting QR-Code...";
+        output.innerText = "QRコード読み取り中"
     }
 }
 setTimeout(scanQRCode, 250);
