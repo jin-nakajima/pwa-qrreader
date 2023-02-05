@@ -1,6 +1,6 @@
 const video = document.createElement('video');
 const startScanBtn = document.getElementById('start-scan');
-const output = document.querySelector('#output');
+const output = document.getElementById('output');
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -16,18 +16,11 @@ function scanQRCode(){
     if(qrcode){
         //drawRect(qrcode.location);
         //output.innerText = qrcode.data;
-        const modal = document.createElement('div');
-        modal.style.position = 'fixed';
-        modal.style.top = 0;
-        modal.style.left = 0;
-        modal.style.right = 0;
-        modal.style.bottom = 0;
-        modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
-        modal.style.display = 'flex';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
-        modal.innerHTML = `<a href="${qrCode.data}" target="_blank">${qrCode.data}</a>`;
-        document.body.appendChild(modal);
+        const modal = document.getElementById('qr-code-modal');
+        const qrCodeData = document.getElementById('qr-code-data');
+        qrCodeData.innerHTML = `<a href="${qrCode.data}" target="_blank">${qrCode.data}</a>`;
+        modal.style.display = 'block';
+        video.srcObject.getTracks().forEach(track => track.stop());
     }else{
         output.innerText = "QRコード読み取り中"
     }

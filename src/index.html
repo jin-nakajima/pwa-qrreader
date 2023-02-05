@@ -27,7 +27,12 @@
   <br>
   <button id="start-scan">QRコードスキャン</button>
   <br>
-  <div id="output"></div>
+  <div id="qr-code-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <p id="qr-code-data"></p>
+    </div>
+  </div>
   <script src="./scripts/qrscan.js"></script>
 </body>
 </html>
