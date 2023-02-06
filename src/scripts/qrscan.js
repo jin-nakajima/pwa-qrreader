@@ -14,11 +14,14 @@ function scanQRCode(){
     let img = ctx.getImageData(0, 0, canvas.width, canvas.height);
     let qrcode = jsQR(img.data, img.width, img.height, {inversionAttempts: "dontInvert"});
     if(qrcode){
+        // QRコードの位置に四角形描画
         drawRect(qrcode.location);
+        // Webページのとき
         if(qrcode.data.startsWith("http")){
           window.location.href = qrcode.data;
+        } else {
+          output.innerText = qrcode.data;
         }
-        //output.innerText = qrcode.data;
     }else{
         output.innerText = "QRコード読み取り中"
     }

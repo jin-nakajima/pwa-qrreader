@@ -13,6 +13,7 @@
   <meta name="theme-color" content="#f3f3f3">
   <script src="./jsQR.js"></script>
   <script>
+    // PWA用
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js')
     }
@@ -23,7 +24,7 @@
   <h1>PWA</h1>
   <p>pwa-qr site.</p>
   <!--<img src="/public/images/icons/icon-192x192.png" alt="app icon"> -->
-  <canvas id="canvas" width="300" height="300"></canvas>
+  <canvas id="canvas" width="200" height="200"></canvas>
   <br>
   <button id="start-scan">QRコードスキャン</button>
   <br>
